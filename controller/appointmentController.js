@@ -8,7 +8,6 @@ exports.getAppointment = async (req, res) => {
         const reservationsPerDay = await AppointmentModel.find({ $and: [{bookingMonth: month}, {bookingDay: day}, {bookingYear: year}] });
         
         if(reservationsPerDay.length === 0){
-            console.log(hours);
             return res.status(200).json({hours, reservationsPerDay});
         }
         if(reservationsPerDay.length > 0){
@@ -24,7 +23,6 @@ exports.getAppointment = async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error);
         return res.status(500).json({msg: 'Error en el servidor, obtener citas'});
     }
 }
@@ -75,6 +73,6 @@ exports.createAppointment = async (req, res) => {
         const reserv = await AppointmentModel.find({ $and: [{bookingMonth: month}, {bookingDay: day}, {bookingYear: year}]});
         return res.status(200).json({reserv});
     } catch (error) {
-        console.log(error)
+        return res.status(500).json({msg: 'Error en el servidor, crear cita'});
     }
 }
