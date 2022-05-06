@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "server danza con la muerte",
   "main": "index.js",
+  "engines": {"node": "14.x"},
   "scripts": {
     "start": "node .",
     "dev": "nodemon ."
